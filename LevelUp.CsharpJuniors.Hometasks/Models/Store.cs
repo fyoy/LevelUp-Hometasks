@@ -10,10 +10,10 @@ namespace Lesson2.StoreInfo.Models
     {
         public string Name { get; }
         public string Address { get; }
-        public Store(string Name, string Address)
+        public Store(string name, string address)
         {
-            this.Name = Name;
-            this.Address = Address;
+            Name = name;
+            Address = address;
         }
         public void PrintInfo()
         {

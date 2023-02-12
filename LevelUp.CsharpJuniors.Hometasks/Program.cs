@@ -4,48 +4,77 @@ using Lesson2.StoreInfo.Models;
 //******************************Задание 11***************************
 
 Console.WriteLine("Введите наименование вашего магазина: ");
-var StoreName = Console.ReadLine();
+var storeName = Console.ReadLine();
 
-if (string.IsNullOrEmpty(StoreName))
+while (string.IsNullOrEmpty(storeName))
 {
     Console.WriteLine("Не удалось записать наименование. Попробуйте снова:");
-    StoreName = Console.ReadLine();
+    storeName = Console.ReadLine();
 }
 
 Console.WriteLine("Введите адрес вашего магазина: ");
 
-var StoreAddress = Console.ReadLine();
+var storeAddress = Console.ReadLine();
 
-if (string.IsNullOrEmpty(StoreAddress))
+while (string.IsNullOrEmpty(storeAddress))
 {
     Console.WriteLine("Не удалось записать адрес. Попробуйте снова:");
-    StoreAddress = Console.ReadLine();
+    storeAddress = Console.ReadLine();
 }
 
-Store mystore = new Store(StoreName, StoreAddress);
+Store mystore = new Store(storeName, storeAddress);
 
 mystore.PrintInfo();
 
 //***************************Задача по карточке человека************************
 
-string Name, Surname, Hobby;
-int Age;
-
 Console.Write("Введите ваши данные:\nИмя:");
-while (string.IsNullOrEmpty(Name = Console.ReadLine() ?? string.Empty)) { Console.Write("Вы не ввели значения. Пожалуйста, введите имя: "); }
+
+var name = Console.ReadLine();
+while (string.IsNullOrEmpty(name))
+{ 
+    Console.Write("Вы не ввели значения. Пожалуйста, введите имя: ");
+    name = Console.ReadLine();
+}
 
 Console.Write("Фамилия:");
-while (string.IsNullOrEmpty(Surname = Console.ReadLine() ?? string.Empty)) { Console.Write("Вы не ввели значения. Пожалуйста, введите фамилию: "); }
+
+var surname = Console.ReadLine();
+while (string.IsNullOrEmpty(surname)) 
+{ 
+    Console.Write("Вы не ввели значения. Пожалуйста, введите фамилию: ");
+    surname = Console.ReadLine();
+}
 
 Console.Write("Возраст:");
-while (!int.TryParse(_ = Console.ReadLine() ?? string.Empty, out Age) || Age > 150)
+
+int age;
+var ageString = Console.ReadLine() ?? string.Empty;
+while (!int.TryParse(ageString,out age) || age > 150 || 0 > age )
 {
-    if (Age > 150) { Console.Write("Возраст похож на библейский. Пожалуйста, введите возраст в виде числа меньше 150 лет: "); }
-    else { Console.Write("Вы неверно указали значение. Пожалуйста, введите возраст в виде числа: "); }
+    if (age > 150)
+    {
+        Console.Write("Возраст похож на библейский. Пожалуйста, введите возраст в виде числа меньше 150 лет: ");
+        ageString = Console.ReadLine();
+    }
+    if(age < 0)
+    {
+        Console.Write("С вашим возрастом можно быть только в планах. Введите существующий возраст: ");
+        ageString = Console.ReadLine();
+    }
+    else
+    { 
+        Console.Write("Вы неверно указали значение. Пожалуйста, введите возраст в виде числа: ");
+        ageString = Console.ReadLine();
+    }
 }
 
 Console.Write("Увлечение:");
-while (string.IsNullOrEmpty(Hobby = Console.ReadLine() ?? string.Empty)) { Console.Write("Вы не ввели значения. Пожалуйста, введите увлечение: "); }
+var hobby = Console.ReadLine();
+while (string.IsNullOrEmpty(hobby)) 
+{ 
+    Console.Write("Вы не ввели значения. Пожалуйста, введите увлечение: ");
+    hobby = Console.ReadLine();
+}
 
-Console.WriteLine($"\nВведенные данные: \n\tИмя: {Name}\n\tФамилия: {Surname}\n\tВозраст: {Age}\n\tУвлечение: {Hobby}");
-
+Console.WriteLine($"\nВведенные данные: \n\tИмя: {name}\n\tФамилия: {surname}\n\tВозраст: {age}\n\tУвлечение: {hobby}");
