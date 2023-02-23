@@ -1,0 +1,29 @@
+USE [SHOP]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ShopItems](
+	[Id] [int] NOT NULL,
+	[SkuId] [nchar](255) NOT NULL,
+	[CategoryId] [int] NOT NULL,
+	[Name] [nchar](255) NOT NULL,
+	[Description] [nchar](255) NULL,
+ CONSTRAINT [PK_ShopItems] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ShopItems]  WITH CHECK ADD  CONSTRAINT [FK_ShopItems_ShopItemCategories] FOREIGN KEY([CategoryId])
+REFERENCES [dbo].[ShopItemCategories] ([Id])
+GO
+
+ALTER TABLE [dbo].[ShopItems] CHECK CONSTRAINT [FK_ShopItems_ShopItemCategories]
+GO
+
