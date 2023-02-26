@@ -8,8 +8,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Prices](
-	[ShopItemId] [nchar](10) NOT NULL,
-	[DateTime] [nchar](10) NOT NULL,
+	[ShopItemId] [int] NOT NULL,
+	[DateTime] [datetime2] NOT NULL,
 	[Price] [money] NOT NULL,
  CONSTRAINT [PK_Prices] PRIMARY KEY CLUSTERED 
 (

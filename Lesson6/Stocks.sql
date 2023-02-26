@@ -9,8 +9,8 @@ GO
 
 CREATE TABLE [dbo].[Stocks](
 	[Id] [int] NOT NULL,
-	[Name] [nchar](255) NOT NULL,
-	[Address] [nchar](255) NOT NULL,
+	[Name] [nvarchar](255) NOT NULL,
+	[Address] [nvarchar](1000) NOT NULL,
  CONSTRAINT [PK_Stocks] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

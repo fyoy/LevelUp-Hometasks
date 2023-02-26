@@ -10,7 +10,7 @@ GO
 CREATE TABLE [dbo].[Orders](
 	[Id] [int] NOT NULL,
 	[ClientId] [int] NOT NULL,
-	[OrderStatus] [nchar](50) NOT NULL,
+	[OrderStatus] [int] NOT NULL,
  CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -26,7 +26,7 @@ ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_Clients]
 GO
 
 ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Orders_OrderStatuses] FOREIGN KEY([OrderStatus])
-REFERENCES [dbo].[OrderStatuses] ([Value])
+REFERENCES [dbo].[OrderStatuses] ([Id])
 GO
 
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Orders_OrderStatuses]

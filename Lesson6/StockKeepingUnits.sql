@@ -10,8 +10,8 @@ GO
 CREATE TABLE [dbo].[StockKeepingUnits](
 	[id] [int] NOT NULL,
 	[StockId] [int] NOT NULL,
-	[Name] [nchar](255) NOT NULL,
-	[Description] [nchar](255) NULL,
+	[Name] [nvarchar](255) NOT NULL,
+	[Description] [nvarchar](1000) NULL,
 	[Amount] [int] NOT NULL,
  CONSTRAINT [PK_StockKeepingUnits] PRIMARY KEY CLUSTERED 
 (

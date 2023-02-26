@@ -8,11 +8,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[OrderStatuses](
-	[Value] [nchar](50) NOT NULL,
-	[Description] [nchar](255) NOT NULL,
+	[Id] [int] NOT NULL,
+	[Value] [nvarchar](50) NOT NULL,
+	[Description] [nvarchar](255) NOT NULL,
  CONSTRAINT [PK_OrderStatuses] PRIMARY KEY CLUSTERED 
 (
-	[Value] ASC
+	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO

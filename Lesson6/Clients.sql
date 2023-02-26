@@ -9,10 +9,10 @@ GO
 
 CREATE TABLE [dbo].[Clients](
 	[Id] [int] NOT NULL,
-	[Name] [nchar](255) NOT NULL,
-	[Phone] [nchar](15) NOT NULL,
-	[Email] [nchar](255) NULL,
-	[DeliveryAddress] [nchar](255) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[Phone] [nvarchar](15) NOT NULL,
+	[Email] [nvarchar](255) NULL,
+	[DeliveryAddress] [nvarchar](1000) NOT NULL,
  CONSTRAINT [PK_Clients] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

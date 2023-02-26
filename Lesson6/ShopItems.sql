@@ -1,6 +1,7 @@
 USE [SHOP]
 GO
 
+/****** Object:  Table [dbo].[ShopItems]    Script Date: 2/26/2023 11:09:51 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,10 +10,10 @@ GO
 
 CREATE TABLE [dbo].[ShopItems](
 	[Id] [int] NOT NULL,
-	[SkuId] [nchar](255) NOT NULL,
+	[SkuId] [int] NOT NULL,
 	[CategoryId] [int] NOT NULL,
-	[Name] [nchar](255) NOT NULL,
-	[Description] [nchar](255) NULL,
+	[Name] [nvarchar](255) NOT NULL,
+	[Description] [nvarchar](1000) NULL,
  CONSTRAINT [PK_ShopItems] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -25,5 +26,12 @@ REFERENCES [dbo].[ShopItemCategories] ([Id])
 GO
 
 ALTER TABLE [dbo].[ShopItems] CHECK CONSTRAINT [FK_ShopItems_ShopItemCategories]
+GO
+
+ALTER TABLE [dbo].[ShopItems]  WITH CHECK ADD  CONSTRAINT [FK_ShopItems_StockKeepingUnits] FOREIGN KEY([SkuId])
+REFERENCES [dbo].[StockKeepingUnits] ([id])
+GO
+
+ALTER TABLE [dbo].[ShopItems] CHECK CONSTRAINT [FK_ShopItems_StockKeepingUnits]
 GO
 

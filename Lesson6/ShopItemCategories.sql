@@ -9,8 +9,8 @@ GO
 
 CREATE TABLE [dbo].[ShopItemCategories](
 	[Id] [int] NOT NULL,
-	[Name] [nchar](10) NOT NULL,
-	[Description] [nchar](10) NULL,
+	[Name] [nvarchar](255) NOT NULL,
+	[Description] [nvarchar](1000) NULL,
  CONSTRAINT [PK_ShopItemCategories] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
