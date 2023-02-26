@@ -12,16 +12,15 @@ namespace Lesson5
         {
             StringBuilder sb = new StringBuilder();
 
-
-            //Формирование новой строки с содержанием только (a=z,A-Z,0-9)
+            //Формирование новой строки с содержанием только (a-z,A-Z,0-9)
             foreach (char c in str)
             {
-                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == ' ')
+                if (char.IsLetterOrDigit(c) || char.IsWhiteSpace(c))
                 {
                     //Удаление лишних пробелов в тексте
                     if (sb.Length > 0)
                     {
-                        if (!(c == ' ' && c == sb[sb.Length - 1]))
+                        if (!( c == sb[^1] && char.IsWhiteSpace(c)))
                         {
                             sb.Append(c);
                         }
@@ -35,6 +34,5 @@ namespace Lesson5
             }
             return sb.ToString().Trim();
         }
-
     }
 }
