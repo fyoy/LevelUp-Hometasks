@@ -12,8 +12,7 @@ CREATE TABLE [dbo].[Shipments](
 	[Id] [int] NOT NULL,
 	[StockId] [int] NOT NULL,
 	[SkuId] [int] NOT NULL,
-	[Amount] [int] NOT NULL,
-	[DepartureDate] [datetime2](7) NOT NULL,
+	[Amount] [float] NOT NULL,
 	[DeliveryDate] [datetime2](7) NOT NULL,
 	[CargoInfo] [nvarchar](255) NULL,
  CONSTRAINT [PK_Shipments] PRIMARY KEY CLUSTERED 
