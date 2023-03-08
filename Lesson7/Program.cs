@@ -28,6 +28,5 @@ example.RootForRange(N, M);
 var example2 = new Monster();
 
 await example2.CreateMonster();
-await example2.CreateMonster();
 
 Console.ReadKey();

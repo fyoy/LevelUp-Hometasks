@@ -15,55 +15,37 @@ namespace Lesson7
 
         public void RootForRange(int M,int N)
         {
-            int bigOne, smallOne;
-
-            //При вводе отрицательного числа сбрасывает значение до 0
-            if (Math.Max(M, N) < 0)//
+            try
             {
-                bigOne = smallOne = 0;
-                Console.WriteLine("Корни уравнения не могут принимать отрицательные значения. Поэтому числа были заменены на 0");
-            }
-            else
-            {
-                bigOne = Math.Max(M, N);
+                int bigOne, smallOne;
 
-                if (Math.Min(N, M) < 0)
+                //При вводе отрицательного числа сбрасывает значение до 0
+                if (M < 0 || N <0)//
                 {
-                    smallOne = 0;
-                    Console.WriteLine("Корни уравнения не могут принимать отрицательные значения. Поэтому меньшее число было заменено на 0");
+                    throw new Exception("Оба числа должны быть положительными.");
                 }
                 else
                 {
-                    smallOne = Math.Min(N, M);
+                    bigOne = Math.Max(M, N);
+                    smallOne= Math.Min(M, N);
                 }
-            }
 
-            if (bigOne > 0)
-            {
-                List<int> list = Enumerable.Range(smallOne, bigOne-smallOne+1).ToList();
+                List<int> list = Enumerable.Range(smallOne, bigOne - smallOne + 1).ToList();
                 int cnt = 0;
-
-                Parallel.ForEach(list, (element) =>
-                {
-                    for (int k = smallOne; k < list.Count; k++)
-                    {
-                        Interlocked.Add(ref cnt, element);
-                    }
-                });
-
+                
                 IEnumerable<int> nums =
                     from num in list.AsParallel().AsOrdered()
                     where num >= 0
                     select num;
-
+                
                 foreach (int num in nums)
                 {
                     Console.WriteLine($"Число: {num} \t->\t Квадратный корень: {Math.Sqrt(num)}");
-                } 
+                }
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("Все числа меньше 0. Выводить нечего.");
+                Console.WriteLine(e.ToString());
             }
         }
     }

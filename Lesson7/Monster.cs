@@ -12,24 +12,26 @@ namespace Lesson7
 {
     public class Monster
     {
-        public string path { get; set; }
+        public string Path { get; set; }
 
         public Monster()
         {
             Console.WriteLine("Введите путь:");
-            path = Console.ReadLine() ?? string.Empty;
+            Path = Console.ReadLine() ?? string.Empty;
         }
+
         public async Task CreateMonster()
         {
-            //Запо
-            string monsterPath = path + "Монстр_под_номером_[" + Guid.NewGuid().ToString() + "].txt";
+            string monsterPath = Path + "Монстр_под_номером_[" + Guid.NewGuid().ToString() + "].txt";
+
             try
             {
-                DirectoryInfo directory = new(path);
-                int _ = 0;
+                DirectoryInfo directory = new(Path);
+                int counter = 0;
+
                 foreach(var file in directory.GetFiles())
                 {
-                    string fullName = Path.Combine(path, file.Name);
+                    string fullName = System.IO.Path.Combine(Path, file.Name);
 
                     using FileStream fileStream = new(monsterPath, FileMode.Append);  
                     using FileStream fileStreamRead = new(fullName, FileMode.Open);
@@ -39,27 +41,21 @@ namespace Lesson7
 
                     await fileStreamRead.ReadAsync(buffer);
 
-                    if (_!=0)
+                    if (counter!=0)
                     {
                         await fileStream.WriteAsync(newline);
                     }
+
                     await fileStream.WriteAsync(buffer);
 
                     Console.WriteLine($"Текст из файла {fullName} записан.");
-                    _++;
-                }
-
-                using (FileStream fileStream = File.OpenRead(monsterPath)) 
-                {
-                    byte[] buffer = new byte[fileStream.Length];                    
-                    await fileStream.ReadAsync(buffer);
+                    counter++;
                 }
             }
             catch (DirectoryNotFoundException)
             {
                 Console.WriteLine("Данного пути не существует.");
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
