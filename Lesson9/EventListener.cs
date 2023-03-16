@@ -3,20 +3,17 @@ namespace Lesson9
 {
     public class EventListener
     {
-        private List<int>? _numbers;
-
         public EventListener(NumberProcessor eventGenerator)
         {
-            _numbers = eventGenerator.numbers;
             eventGenerator.NumberReceivedEvent += Listen1;
             eventGenerator.NumberReceivedEvent += Listen2;
         }
 
-        private void Listen1(object sender)
+        private void Listen1(object sender, List<int> numberList)
         {
             int sum = 0;
 
-            foreach (var num in _numbers)
+            foreach (var num in numberList)
             {
                 sum += num;
             }
@@ -31,9 +28,9 @@ namespace Lesson9
             }
         }
 
-        private void Listen2(object sender)
+        private void Listen2(object sender, List<int> numberList)
         {
-            List<int>? inverted = _numbers;
+            List<int>? inverted = numberList;
 
             if(inverted.Count == 0)
             {

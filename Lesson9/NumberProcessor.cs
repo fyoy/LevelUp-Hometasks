@@ -4,13 +4,13 @@ namespace Lesson9
 {
     public class NumberProcessor
     {
-        public delegate void NumberEnteredEventHandler(object sender);
+        public delegate void NumberEnteredEventHandler(object sender,List<int> _numbers);
 
         public event NumberEnteredEventHandler? NumberReceivedEvent;
 
-        public List<int>? numbers = new();
+        private List<int>? _numbers = new();
 
-        public void RaiseEvent(string text)
+        public void StringToNumbers(string text)
         {
             string[] stringNumbers = Regex.Split(text, @"\D+");
 
@@ -20,11 +20,11 @@ namespace Lesson9
                 {
                     if (i != 0)
                     {
-                        numbers.Add(i);
+                        _numbers.Add(i);
                     }
                 }
             }
-            NumberReceivedEvent?.Invoke(this);
+            NumberReceivedEvent?.Invoke(this, _numbers);
         }
     }
 }

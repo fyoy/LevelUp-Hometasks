@@ -37,10 +37,11 @@
 
 //9.2
 
-string numbers = Console.ReadLine() ?? string.Empty;
+Console.WriteLine("Введите вашу строку с числами:");
+string numbersString = Console.ReadLine() ?? string.Empty;
 
 var processor = new NumberProcessor();
 
 var listener = new EventListener(processor);
 
-processor.RaiseEvent(numbers);
+processor.StringToNumbers(numbersString);
